@@ -1,0 +1,24 @@
+{
+     "name": "craftnepalbot",
+     "version": "1.0.1",
+     "description": "It's a discord bot.",
+     "main": "index.js",
+     "dependencies": {
+          "discord.js": "^11.6.4",
+          "minecraft-lib": "^1.1.6",
+          "mysql": "^2.18.1",
+          "mysql2": "^2.1.0",
+          "prompt-sync": "^4.2.0",
+          "sequelize": "^6.3.3",
+          "snekfetch": "^4.0.4"
+     },
+     "devDependencies": {
+          "node-fetch": "^2.6.0",
+          "nodemon": "^2.0.4"
+     },
+     "scripts": {
+          "start": "nodemon index.js"
+     },
+     "author": "Subu n Code",
+     "license": "ISC"
+}
