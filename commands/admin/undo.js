@@ -8,8 +8,10 @@ module.exports = {
           if (args[0] !== "edit") {
                return;
           }
+          const channel = message.channel;
+          message.delete();
 
-          const messages = await message.channel.fetchMessages({ limit: 10 });
+          const messages = await channel.fetchMessages({ limit: 10 });
           const botMessages = messages.filter((msg) => {
                return msg.author.id === client().user.id;
           });

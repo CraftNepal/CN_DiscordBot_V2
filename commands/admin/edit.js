@@ -5,7 +5,9 @@ module.exports = {
      name: "edit",
      description: "Edits the last message written by CraftNepal",
      async execute(message, args) {
-          const messages = await message.channel.fetchMessages({ limit: 10 });
+          const channel = message.channel;
+          message.delete();
+          const messages = await channel.fetchMessages({ limit: 10 });
           const botMessages = messages.filter((msg) => {
                return msg.author.id === client().user.id;
           });
