@@ -25,7 +25,9 @@ sequelize
           console.log("Successfully connected to database");
      })
      .catch((err) => {
-          console.log(err);
+          console.log(
+               "Could not connect to SQL database. For furthur Info, check Sequelize in index.js and check error"
+          );
      });
 /************************************************************************************ */
 
