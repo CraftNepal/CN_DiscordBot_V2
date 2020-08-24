@@ -12,6 +12,7 @@ const { membersRole } = require("../config.json");
 const Snekfetch = require("snekfetch");
 const fetch = require("node-fetch");
 const path = require("path");
+const webhookClient = new Discord.WebhookClient(config.webhooks.id, config.webhooks.token);
 
 const Minecraft = require("minecraft-lib");
 //exports
