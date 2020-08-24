@@ -93,6 +93,12 @@ exports.onMessage = (message) => {
                } catch (error) {
                     console.error(error);
                     message.reply("there was an error trying to execute that command!");
+                    client.channels
+                         .get(config.currentGuild.discordLogChannelId)
+                         .send(
+                              "An error occured while trying to run a command. Details below:\n" +
+                                   error
+                         );
                }
           }
      }

@@ -13,7 +13,8 @@ const verified = emojis.verified;
 //exports
 module.exports = {
      name: "resolve",
-     description: "resolve",
+     description:
+          "Use this command to close the ticket after your issue has been resolved, if you have opened one.",
      async execute(message, args) {
           try {
                log(message.author.tag, client);

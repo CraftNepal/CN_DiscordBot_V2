@@ -3,7 +3,7 @@ const emojis = require("../../emoji.json");
 const sadFace = emojis.sadFace;
 module.exports = {
      name: "sad",
-     description: "sad",
+     description: "An expression to share your saddness with the bot.",
      execute(message, args) {
           var sad_message = [
                "sad indeed!  " + sadFace,
