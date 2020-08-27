@@ -4,6 +4,7 @@ const discord = require("../client");
 const client = discord.client();
 const commands = discord.commands();
 const adminCommands = discord.adminCommands();
+const modCommands = discord.modCommands();
 const config = require("../config.json");
 const utils = require("../utils/utils");
 const log = utils.log;
@@ -80,9 +81,27 @@ exports.onMessage = (message) => {
                if (
                     !adminCommands.has(command) ||
                     !message.member.roles.has(config.currentGuild.roles.adminRoleId)
+                    
+                    
                ) {
-                    message.channel.send("=_=");
-                    return;
+                    // message.channel.send("You aren't Moderator.");
+                    // return;
+                    if (
+                        !modCommands.has(command) ||
+                        !message.member.roles.has(config.currentGuild.roles.helpersRoleId)
+                    ){
+                        message.channel.send("=_=");
+                        return;
+                    }else {
+                        try{
+
+                            modCommands.get(command).execute(message, args);
+                        }catch(error){
+                            console.error(error);
+                            message.reply("there was an error trying to execute that command!");
+
+                        }
+                    }
                } else {
                     try {
                          adminCommands.get(command).execute(message, args);

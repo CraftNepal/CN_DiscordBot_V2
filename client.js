@@ -57,4 +57,15 @@ module.exports = {
           }
           return adminCommands;
      },
+     modCommands: () => {
+        const modCommands = new Discord.Collection();
+        const commandFiles = fs
+             .readdirSync("./commands/moderators")
+             .filter((file) => file.endsWith(".js"));
+        for (const file of commandFiles) {
+             const modCommand = require(`./commands/moderators/${file}`);
+             modCommands.set(modCommand.name, modCommand);
+        }
+        return modCommands;
+   }
 };
