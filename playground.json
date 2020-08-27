@@ -1,0 +1,23 @@
+{
+     "tested_positive": 32678,
+     "tested_negative": 577791,
+     "tested_total": 610469,
+     "in_isolation": 13715,
+     "quarantined": 11275,
+     "tested_rdt": 312402,
+     "pending_result": 0,
+     "recovered": 18806,
+     "deaths": 157,
+     "source": "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fmohpnep%2Fvideos%2F769298787163992%2F&show_text=0&width=560",
+     "updated_at": "2020-08-24T00:00:00.000Z",
+     "latest_sit_report": {
+          "type": "MOHP",
+          "_id": "5f3e7d96cbdb2c2f9b7f6e08",
+          "no": 192,
+          "date": "2020-08-19",
+          "url": "https://drive.google.com/file/d/1O7aU9IpliQO8JbBCXS0b9DozgnUXvBVJ/view",
+          "created_at": "2020-08-20T13:41:42.590Z",
+          "updated_at": "2020-08-20T13:41:42.590Z",
+          "__v": 0
+     }
+}

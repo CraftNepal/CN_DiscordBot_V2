@@ -17,6 +17,10 @@ const webhookClient = new Discord.WebhookClient(config.webhooks.id, config.webho
 const Minecraft = require("minecraft-lib");
 //exports
 exports.onReady = () => {
+     client.channels
+          .get(config.currentGuild.statsChannelId)
+          .setName("Members : " + client.guilds.get(config.currentGuild.id).memberCount);
+
      //Setting the bot status to Number of online players in game , and also indicating the uptime of the bot itself.
      client.setInterval(() => {
           let unit = "mins";
@@ -161,7 +165,7 @@ exports.onMessageUpdate = (oldMessage, newMessage) => {
 };
 
 exports.onMessageDelete = (message) => {
-     if (message.author.bot) {
+     if (message.author.bot || message.channel.id === config.currentGuild.discordLogChannelId) {
           return;
      }
      if (!message.content) {
@@ -178,6 +182,9 @@ exports.onMessageDelete = (message) => {
 };
 
 exports.onGuildMemberAdd = (member) => {
+     client.channels
+          .get(config.currentGuild.statsChannelId)
+          .setName("Members : " + client.guilds.get(config.currentGuild.id).memberCount);
      let joinembed = new Discord.RichEmbed()
           .setAuthor("Welcome to CraftNepal Discord server!")
           .setColor("RANDOM")
@@ -189,6 +196,16 @@ exports.onGuildMemberAdd = (member) => {
                )} to unlock the rest of the server"`
           );
      member.guild.channels.get(config.currentGuild.welcomeChannelId).send(joinembed);
+
+     //Add new voice channel with no join perms if none exits
+
+     //update voice channel name with total number of members
+};
+
+exports.onGuildMemberRemove = (member) => {
+     client.channels
+          .get(config.currentGuild.statsChannelId)
+          .setName("Members : " + client.guilds.get(config.currentGuild.id).memberCount);
 };
 
 exports.onMessageReactionAdd = (reaction) => {

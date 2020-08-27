@@ -7,6 +7,7 @@ const token = config.token;
 
 let connected;
 let connectedTimeStamp = 0;
+let memberCommands;
 module.exports = {
      connect: () => {
           {
@@ -36,8 +37,15 @@ module.exports = {
                const command = require(`./commands/members/${file}`);
                commands.set(command.name, command);
           }
+          memberCommands = commands;
+          console.log("THIS IS COMMANDS");
           return commands;
      },
+     getMemberCommands: () => {
+          console.log("TESTING", memberCommands);
+          return memberCommands;
+     },
+
      adminCommands: () => {
           const adminCommands = new Discord.Collection();
           const commandFiles = fs

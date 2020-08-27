@@ -5,6 +5,7 @@
      "main": "index.js",
      "dependencies": {
           "discord.js": "^11.6.4",
+          "express": "^4.17.1",
           "minecraft-lib": "^1.1.6",
           "mysql": "^2.18.1",
           "mysql2": "^2.1.0",
