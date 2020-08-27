@@ -11,7 +11,7 @@ module.exports = {
             }else{
 
                 const member = message.mentions.members.first();
-                if(member.roles.some(role => role.name === 'muted')){
+                if(member.roles.some(role => role.name === 'Muted')){
                         const unMuteUser = member.removeRole(config.currentGuild.muteRole);
                         if(unMuteUser){
                             message.channel.send(`${member} was Unmuted!`);
