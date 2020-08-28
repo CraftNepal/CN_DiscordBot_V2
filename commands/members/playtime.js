@@ -361,10 +361,10 @@ module.exports = {
                                                                                                                                                            .toString();
                                                                                                                                                  let playtimeEmbed = new Discord.RichEmbed()
                                                                                                                                                       .setThumbnail(
-                                                                                                                                                           `https://craftnepal.host/skin/${target}?time=${Date.now().toString()}`
+                                                                                                                                                           `http://craftnepal.host:1338/api/skin/${target}?time=${Date.now().toString()}`
                                                                                                                                                       )
                                                                                                                                                       .setImage(
-                                                                                                                                                           `https://craftnepal.host/skin/${target}?type=fullBody&time=${Date.now().toString()}`
+                                                                                                                                                           `http://craftnepal.host:1338/api/skin/${target}?type=fullBody&time=${Date.now().toString()}`
                                                                                                                                                       )
                                                                                                                                                       .setColor(
                                                                                                                                                            "#0099ff"

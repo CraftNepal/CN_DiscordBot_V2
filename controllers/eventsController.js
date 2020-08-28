@@ -76,31 +76,29 @@ exports.onMessage = (message) => {
      if (message.content.startsWith(config.prefix)) {
           const args = message.content.slice(1).split(/ +/);
           const command = args.shift().toLowerCase();
+          if (!command) {
+               return;
+          }
 
           if (!commands.has(command)) {
                if (
                     !adminCommands.has(command) ||
                     !message.member.roles.has(config.currentGuild.roles.adminRoleId)
-                    
-                    
                ) {
                     // message.channel.send("You aren't Moderator.");
                     // return;
                     if (
-                        !modCommands.has(command) ||
-                        !message.member.roles.has(config.currentGuild.roles.helpersRoleId)
-                    ){
-                        message.channel.send("=_=");
-                        return;
-                    }else {
-                        try{
-
-                            modCommands.get(command).execute(message, args);
-                        }catch(error){
-                            console.error(error);
-                            message.reply("there was an error trying to execute that command!");
-
-                        }
+                         !modCommands.has(command) ||
+                         !message.member.roles.has(config.currentGuild.roles.helpersRoleId)
+                    ) {
+                         console.log("incorrect command");
+                    } else {
+                         try {
+                              modCommands.get(command).execute(message, args);
+                         } catch (error) {
+                              console.error(error);
+                              message.reply("there was an error trying to execute that command!");
+                         }
                     }
                } else {
                     try {
@@ -190,14 +188,18 @@ exports.onMessageDelete = (message) => {
      if (!message.content) {
           console.log("The deleted message was an embed");
      }
-     let deleteembed = new Discord.RichEmbed()
-          .setColor("#0099ff")
-          .setTitle("Message Deleted")
-          .setAuthor(message.author.tag, message.author.avatarURL)
-          .setThumbnail(message.author.avatarURL)
-          .addField("Message:", message.content);
-     client.channels.get(config.currentGuild.discordLogChannelId).send(deleteembed);
-     log(message.author.tag + " Deleted: [ " + message.content + " ] ", client);
+     if (message.member.roles.some((role) => role.name === "Muted")) {
+          return;
+     } else {
+          let deleteembed = new Discord.RichEmbed()
+               .setColor("#0099ff")
+               .setTitle("Message Deleted")
+               .setAuthor(message.author.tag, message.author.avatarURL)
+               .setThumbnail(message.author.avatarURL)
+               .addField("Message:", message.content);
+          client.channels.get(config.currentGuild.discordLogChannelId).send(deleteembed);
+          log(message.author.tag + " Deleted: [ " + message.content + " ] ", client);
+     }
 };
 
 exports.onGuildMemberAdd = (member) => {
