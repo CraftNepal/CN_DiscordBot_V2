@@ -116,7 +116,7 @@ exports.scanMessage = (msg, client) => {
           if (askeddiscord.has(msg.author.id)) {
                msg.channel.send("");
           } else {
-               msg.channel.send("<「 http://discord.craftnepal.host 」>");
+               msg.channel.send("「<http://discord.craftnepal.host>」");
                // the user can type the command ... your command code goes here :)
 
                // Adds the user to the set so that they can't talk for a minute
