@@ -43,13 +43,11 @@ exports.scanMessage = (msg, client) => {
                if (askedmap.has(msg.author.id)) {
                     msg.channel.send("");
                } else {
-                    msg.channel.send(
-                         "Browse this <http://maps.craftnepal.host/> or type /map in game."
-
-                    )
-                    .then(m => {
-                         m.delete(3000);
-                    });
+                    msg.channel
+                         .send("Browse this <http://maps.craftnepal.host/> or type /map in game.")
+                         .then((m) => {
+                              m.delete(3000);
+                         });
 
                     // the user can type the command ... your command code goes here :)
 
@@ -68,8 +66,7 @@ exports.scanMessage = (msg, client) => {
                if (askedip.has(msg.author.id)) {
                     msg.channel.send("");
                } else {
-                    msg.channel.send("Server ip: **play.craftnepal.host** ")
-                    .then(m => {
+                    msg.channel.send("Server ip: **play.craftnepal.host** ").then((m) => {
                          m.delete(3000);
                     });
                     // the user can type the command ... your command code goes here :)
@@ -108,8 +105,7 @@ exports.scanMessage = (msg, client) => {
           if (askedvote.has(msg.author.id)) {
                msg.channel.send("");
           } else {
-
-               msg.channel.send("<https://vote.craftnepal.host>").then(m => {
+               msg.channel.send("<https://vote.craftnepal.host>").then((m) => {
                     m.delete(3000);
                });
 
@@ -120,7 +116,6 @@ exports.scanMessage = (msg, client) => {
                setTimeout(() => {
                     // Removes the user from the set after a minute
                     askedvote.delete(msg.author.id);
-
                }, 60000);
           }
      }
@@ -129,12 +124,9 @@ exports.scanMessage = (msg, client) => {
           if (askeddiscord.has(msg.author.id)) {
                msg.channel.send("");
           } else {
-           msg.channel.send("「<http://discord.craftnepal.host>」");
-               .then(m => {
+               msg.channel.send("「<http://discord.craftnepal.host>」").then((m) => {
                     m.delete(3000);
                });
-
-    
 
                // the user can type the command ... your command code goes here :)
 
@@ -164,22 +156,27 @@ exports.scanMessage = (msg, client) => {
                "Please Vetify your age to use bad Words!",
                "Just Stop it already!",
                "Hey Kid, Thats illegal",
-               
+
                "Bhai stand up comidean ho ki kyaho",
                "Look, no one thinks cursing is funny",
                "Stop it kid",
                "Are you even old to say these?",
                "I didn't came here to see this",
                "cringe",
-               "xada na bol vaneko bujdainas?"
+               "xada na bol vaneko bujdainas?",
           ];
           msg.reply(random_msg[Math.floor(Math.random() * random_msg.length)]);
 
           //client.channel.get("663058152391966755").send(msg.member.user.tag + "= >" + msg.content);
      }
-     if (message.content.includes('discord.gg/'||'discordapp.com/invite/' || 'https://')) { 
-
-          message.delete() //delete the message
-            .then(message.channel.send(message.channel.send(`${message.author.username}, Links are not allowed in this channel`)))
-        }
+     if (msg.content.includes("discord.gg/" || "discordapp.com/invite/" || "https://")) {
+          msg.delete() //delete the message
+               .then(
+                    message.channel.send(
+                         message.channel.send(
+                              `${message.author.username}, Links are not allowed in this channel`
+                         )
+                    )
+               );
+     }
 };

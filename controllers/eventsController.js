@@ -25,8 +25,11 @@ exports.onReady = () => {
      //Setting the bot status to Number of online players in game , and also indicating the uptime of the bot itself.
      client.setInterval(() => {
           let unit = "mins";
+          let unitD = "mins";
           const uptime = (Date.now() - client.readyAt) / 60000;
+          const downtime = (Date.now() - 1598680823000) / 60000;
           let finalUptime = uptime.toFixed(2);
+          let finalDowntime = downtime.toFixed(2);
           if (uptime > 60 && uptime < 120) {
                unit = "hour";
                finalUptime = (uptime / 60).toFixed(2);
@@ -35,15 +38,33 @@ exports.onReady = () => {
                unit = "hrs";
                finalUptime = (uptime / 60).toFixed(2);
           }
+          if (downtime > 60 && downtime < 120) {
+               unitD = "hour";
+               finalDowntime = (downtime / 60).toFixed(2);
+          }
+          if (downtime >= 120) {
+               unitD = "hrs";
+               finalDowntime = (downtime / 60).toFixed(2);
+          }
 
-          Minecraft.servers.get("play.craftnepal.host", 25577).then((result) => {
-               console.log(result.players.online);
+          Minecraft.servers
+               .get("play.craftnepal.host", 25577)
+               .then((result) => {
+                    console.log(result.players.online);
 
-               const online = result.players.online;
-               client.user.setActivity(`${online} players | ${finalUptime}${unit}`, {
-                    type: "watching",
+                    const online = result.players.online;
+
+                    client.user.setActivity(`${online} players | ${finalUptime}${unit}`, {
+                         type: "watching",
+                    });
+               })
+               .catch((err) => {
+                    console.log(err);
+                    console.log("Cannot connect to server");
+                    client.user.setActivity(`Server down😞 for ${finalDowntime}${unitD}`, {
+                         type: "watching",
+                    });
                });
-          });
      }, 15000);
 
      //Caching messages in some channels.
