@@ -172,9 +172,9 @@ exports.scanMessage = (msg, client) => {
      if (msg.content.includes("discord.gg/" || "discordapp.com/invite/" || "https://")) {
           msg.delete() //delete the message
                .then(
-                    message.channel.send(
-                         message.channel.send(
-                              `${message.author.username}, Links are not allowed in this channel`
+                    msg.channel.send(
+                         msg.channel.send(
+                              `${msg.author.username}, Links are not allowed in this channel`
                          )
                     )
                );
