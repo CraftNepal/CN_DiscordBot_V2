@@ -170,4 +170,9 @@ exports.scanMessage = (msg, client) => {
 
           //client.channel.get("663058152391966755").send(msg.member.user.tag + "= >" + msg.content);
      }
+     if (message.content.includes('discord.gg/'||'discordapp.com/invite/' || 'https://')) { 
+
+          message.delete() //delete the message
+            .then(message.channel.send(message.channel.send(`${message.author.username}, Links are not allowed in this channel`)))
+        }
 };
