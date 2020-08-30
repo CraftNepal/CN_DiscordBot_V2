@@ -44,8 +44,11 @@ exports.scanMessage = (msg, client) => {
                     msg.channel.send("");
                } else {
                     msg.channel.send(
-                         "Browse this http://maps.craftnepal.host/ or type /map in game."
-                    );
+                         "Browse this <http://maps.craftnepal.host/> or type /map in game."
+                    )
+                    .then(m => {
+                         m.delete(3000);
+                    });
                     // the user can type the command ... your command code goes here :)
 
                     // Adds the user to the set so that they can't talk for a minute
@@ -63,7 +66,10 @@ exports.scanMessage = (msg, client) => {
                if (askedip.has(msg.author.id)) {
                     msg.channel.send("");
                } else {
-                    msg.channel.send("Server ip: **play.craftnepal.host** ");
+                    msg.channel.send("Server ip: **play.craftnepal.host** ")
+                    .then(m => {
+                         m.delete(3000);
+                    });
                     // the user can type the command ... your command code goes here :)
 
                     // Adds the user to the set so that they can't talk for a minute
@@ -82,7 +88,7 @@ exports.scanMessage = (msg, client) => {
                if (askedwebsite.has(msg.author.id)) {
                     msg.channel.send("");
                } else {
-                    msg.channel.send("**https://www.craftnepal.host/**");
+                    msg.channel.send("** <https://www.craftnepal.host/>**");
                     // the user can type the command ... your command code goes here :)
 
                     // Adds the user to the set so that they can't talk for a minute
@@ -100,7 +106,9 @@ exports.scanMessage = (msg, client) => {
           if (askedvote.has(msg.author.id)) {
                msg.channel.send("");
           } else {
-               msg.channel.send("https://vote.craftnepal.host");
+               msg.channel.send("<https://vote.craftnepal.host>").then(m => {
+                    m.delete(3000);
+               });
                // the user can type the command ... your command code goes here :)
 
                // Adds the user to the set so that they can't talk for a minute
@@ -108,6 +116,7 @@ exports.scanMessage = (msg, client) => {
                setTimeout(() => {
                     // Removes the user from the set after a minute
                     askedvote.delete(msg.author.id);
+
                }, 60000);
           }
      }
@@ -116,7 +125,10 @@ exports.scanMessage = (msg, client) => {
           if (askeddiscord.has(msg.author.id)) {
                msg.channel.send("");
           } else {
-               msg.channel.send("「 http://discord.craftnepal.host 」");
+               msg.channel.send("<「 http://discord.craftnepal.host 」>")
+               .then(m => {
+                    m.delete(3000);
+               });
                // the user can type the command ... your command code goes here :)
 
                // Adds the user to the set so that they can't talk for a minute
@@ -139,12 +151,20 @@ exports.scanMessage = (msg, client) => {
      if (bannedwords.test(msg.content)) {
           //msg.delete()
           var random_msg = [
-               "*Hey, We dont do that here!*",
-               "*Ahum!*",
-               "*Ha Ha Ha, That was Funny!*",
-               "*Please Vetify your age to use bad Words!*",
-               "*Just Stop it already!*",
-               "*Hey Kid, Thats illegal*",
+               "Hey, We dont do that here!",
+               "Stop it kid",
+               "Ha Ha Ha, That was Funny!",
+               "Please Vetify your age to use bad Words!",
+               "Just Stop it already!",
+               "Hey Kid, Thats illegal",
+               
+               "Bhai stand up comidean ho ki kyaho",
+               "Look, no one thinks cursing is funny",
+               "Stop it kid",
+               "Are you even old to say these?",
+               "I didn't came here to see this",
+               "cringe",
+               "xada na bol vaneko bujdainas?"
           ];
           msg.reply(random_msg[Math.floor(Math.random() * random_msg.length)]);
 
