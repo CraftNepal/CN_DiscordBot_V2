@@ -45,10 +45,12 @@ exports.scanMessage = (msg, client) => {
                } else {
                     msg.channel.send(
                          "Browse this <http://maps.craftnepal.host/> or type /map in game."
+
                     )
                     .then(m => {
                          m.delete(3000);
                     });
+
                     // the user can type the command ... your command code goes here :)
 
                     // Adds the user to the set so that they can't talk for a minute
@@ -106,9 +108,11 @@ exports.scanMessage = (msg, client) => {
           if (askedvote.has(msg.author.id)) {
                msg.channel.send("");
           } else {
+
                msg.channel.send("<https://vote.craftnepal.host>").then(m => {
                     m.delete(3000);
                });
+
                // the user can type the command ... your command code goes here :)
 
                // Adds the user to the set so that they can't talk for a minute
@@ -125,10 +129,13 @@ exports.scanMessage = (msg, client) => {
           if (askeddiscord.has(msg.author.id)) {
                msg.channel.send("");
           } else {
-               msg.channel.send("<「 http://discord.craftnepal.host 」>")
+           msg.channel.send("「<http://discord.craftnepal.host>」");
                .then(m => {
                     m.delete(3000);
                });
+
+    
+
                // the user can type the command ... your command code goes here :)
 
                // Adds the user to the set so that they can't talk for a minute
