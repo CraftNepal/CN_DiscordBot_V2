@@ -208,6 +208,7 @@ exports.onMessageDelete = (message) => {
      }
      if (!message.content) {
           console.log("The deleted message was an embed");
+          return;
      }
      if (message.member.roles.some((role) => role.name === "Muted")) {
           return;
