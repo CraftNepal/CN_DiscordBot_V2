@@ -35,6 +35,7 @@ exports.scanMessage = (msg, client) => {
      const askeddiscord = new Set();
      const askedvote = new Set();
      const askedwebsite = new Set();
+     const askreddit = new set();
      //splits sentences into words
      let wordArray = msg.content.split(" ");
      let map = ["map", "dynmap?", "map?", "map.", "dynmap", "Map.", "Map."];
@@ -137,6 +138,19 @@ exports.scanMessage = (msg, client) => {
                     askeddiscord.delete(msg.author.id);
                }, 60000);
           }
+     }
+     let askReddit = ["reddit", "subreddit", "r/"]
+     for(var r = 0; r < askReddit.length; r++){
+          if(askreddit.has(msg.author.id)){
+               msg.channel.send("")
+          }
+          else{
+               msg.channel.send("「reddit.com/r/craftnepal」").then((m) => m.delete(3000));
+          }
+          askreddit.add(msg.author.id)
+          setTimeout(() => {
+               askreddit.delete(msg.author.id)
+          })
      }
      let rip = [`:skull:`];
      for (var i = 0; i < rip.length; i++) {
