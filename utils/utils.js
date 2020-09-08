@@ -124,9 +124,7 @@ exports.scanMessage = (msg, client) => {
           if (askeddiscord.has(msg.author.id)) {
                msg.channel.send("");
           } else {
-               msg.channel.send("「<http://discord.craftnepal.host>」").then((m) => {
-                    m.delete(3000);
-               });
+               msg.channel.send("「<http://discord.craftnepal.host>」");
 
                // the user can type the command ... your command code goes here :)
 
