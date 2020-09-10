@@ -42,6 +42,7 @@ Jokes aside
           "rulesChannelId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
           "infoChannelId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
           "helpChannelId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+          "weebChannelId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
           "roles": {
                "adminRoleId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                "serverBotRoleId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
