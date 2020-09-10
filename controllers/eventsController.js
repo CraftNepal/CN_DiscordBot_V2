@@ -16,7 +16,7 @@ const path = require("path");
 const webhookClient = new Discord.WebhookClient(config.webhooks.id, config.webhooks.token);
 
 const Minecraft = require("minecraft-lib");
-const { checkAiringAnime } = require("../models/checkAnime.js");
+const { checkAiringAnime } = require("../utils/checkAnime.js");
 //exports
 exports.onReady = () => {
      const statsChannel = client.channels.get(config.currentGuild.statsChannelId);
@@ -147,7 +147,7 @@ exports.onMessage = (message) => {
                          .get(config.currentGuild.discordLogChannelId)
                          .send(
                               "An error occured while trying to run a command. Details below:\n" +
-                                   error
+                              error
                          );
                }
           }
@@ -198,11 +198,11 @@ exports.onMessageUpdate = (oldMessage, newMessage) => {
           client.channels.get(config.currentGuild.discordLogChannelId).send(embed);
           log(
                oldMessage.author.tag +
-                    " Edited: [ " +
-                    oldMessage.content +
-                    " ===> " +
-                    newMessage.content +
-                    " ] ",
+               " Edited: [ " +
+               oldMessage.content +
+               " ===> " +
+               newMessage.content +
+               " ] ",
                client
           );
      } else {
