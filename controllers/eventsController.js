@@ -16,6 +16,7 @@ const path = require("path");
 const webhookClient = new Discord.WebhookClient(config.webhooks.id, config.webhooks.token);
 
 const Minecraft = require("minecraft-lib");
+const { checkAiringAnime } = require("../models/checkAnime.js");
 //exports
 exports.onReady = () => {
      const statsChannel = client.channels.get(config.currentGuild.statsChannelId);
@@ -93,6 +94,10 @@ exports.onReady = () => {
           .catch((err) => {
                console.log(err);
           });
+     //anime airing check
+     setInterval(() => {
+          checkAiringAnime();
+     }, 600000);
 };
 
 exports.onMessage = (message) => {
