@@ -18,9 +18,12 @@ const webhookClient = new Discord.WebhookClient(config.webhooks.id, config.webho
 const Minecraft = require("minecraft-lib");
 //exports
 exports.onReady = () => {
-     client.channels
-          .get(config.currentGuild.statsChannelId)
-          .setName("Members : " + client.guilds.get(config.currentGuild.id).memberCount);
+     const statsChannel = client.channels.get(config.currentGuild.statsChannelId);
+     if (statsChannel) {
+          statsChannel.setName(
+               "Members : " + client.guilds.get(config.currentGuild.id).memberCount
+          );
+     }
 
      //Setting the bot status to Number of online players in game , and also indicating the uptime of the bot itself.
      client.setInterval(() => {
