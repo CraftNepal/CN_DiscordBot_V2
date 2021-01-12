@@ -5,11 +5,11 @@ const Discord = require("discord.js");
 const discord = require("./client");
 discord.connect();
 const client = discord.client();
+const connection = require('./utils/connections.js');
 
 const eventsController = require("./controllers/eventsController");
 
 const errorController = require("./controllers/errorController");
-
 const sequelize = require("./utils/database");
 
 const User = require("./models/user");
@@ -46,7 +46,7 @@ app.use((err, req, res, next) => {
      });
 });
 
-app.listen(1338);
+app.listen(process.env.PORT || 1338);
 
 //Database relations
 User.hasMany(Ticket);
